@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public interface IService
 { }

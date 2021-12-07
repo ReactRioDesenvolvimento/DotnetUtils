@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public sealed class AsyncLazy<T>
 {

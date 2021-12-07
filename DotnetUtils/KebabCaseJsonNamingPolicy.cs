@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public sealed class KebabCaseJsonNamingPolicy : JsonNamingPolicy
 {

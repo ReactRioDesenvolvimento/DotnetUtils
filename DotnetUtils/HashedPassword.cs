@@ -1,4 +1,4 @@
-﻿namespace ReactRio.DotnetUtils;
+﻿namespace ReactRio.Utils;
 
 public class HashedPassword
 {

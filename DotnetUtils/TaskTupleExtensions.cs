@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public static class TaskTupleExtensions
 {

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Web;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public static class QueryString
 {

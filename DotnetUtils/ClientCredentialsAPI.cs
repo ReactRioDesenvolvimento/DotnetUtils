@@ -1,6 +1,6 @@
 ﻿using IdentityModel.Client;
 
-namespace ReactRio.DotnetUtils;
+namespace ReactRio.Utils;
 
 public sealed class ClientCredentialsAPI : HttpClient
 {
