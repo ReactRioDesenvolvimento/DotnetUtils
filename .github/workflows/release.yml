@@ -36,4 +36,4 @@ jobs:
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
 
     - name: Push
-      run: dotnet nuget push ReactRio.Utils.${VERSION}.nupkg --source https://nuget.pkg.github.com/OWNER/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push ReactRio.Utils.${VERSION}.nupkg --source https://api.nuget.org --api-key ${{ secrets.NUGET_KEY }}
