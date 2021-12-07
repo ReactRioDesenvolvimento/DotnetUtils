@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<PackageId>ReactRio.Utils</PackageId>
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/ReactRioDesenvolvimento/DotnetUtils</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
