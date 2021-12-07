@@ -17,6 +17,19 @@ jobs:
         echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
         echo "REPO=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget
+
     - name: Build
       run: dotnet build --configuration Release /p:Version=${VERSION}
 
