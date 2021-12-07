@@ -30,10 +30,10 @@ jobs:
           ${{ runner.os }}-nuget
 
     - name: Build
-      run: dotnet build --configuration Release /p:Version=${VERSION}
+      run: dotnet build --configuration Release /p:Version=${{ env.VERSION }}
 
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: dotnet pack --configuration Release /p:Version=${{ env.VERSION }} --no-build --output .
 
     - name: Push
-      run: dotnet nuget push ReactRio.Utils.${VERSION}.nupkg --source https://api.nuget.org --api-key ${{ secrets.NUGET_KEY }}
+      run: dotnet nuget push ReactRio.Utils.${{ env.VERSION }}.nupkg --source ${{ secrets.NUGET_SOURCE }} --api-key ${{ secrets.NUGET_KEY }}
