@@ -2,8 +2,8 @@
 
 public class ResourceConflictException : RequestException
 {
-    public readonly string? ResourceIdentifier;
-    public readonly string? ResourceIdentifierName;
+    public readonly string? ConflictingPropertyName;
+    public readonly string? ConflictingPropertyValue;
     public readonly string ResourceName;
 
     public ResourceConflictException(string resourceName) : base(GetMessage(resourceName))
@@ -18,13 +18,13 @@ public class ResourceConflictException : RequestException
 
     public ResourceConflictException
     (
-        string resourceName, string resourceIdentifier, string resourceIdentifierName,
+        string resourceName, string conflictingPropertyValue, string conflictingPropertyName,
         string? message = null
-    ) : base(message ?? GetMessage(resourceName, resourceIdentifier, resourceIdentifierName))
+    ) : base(message ?? GetMessage(resourceName, conflictingPropertyValue, conflictingPropertyName))
     {
         ResourceName = resourceName;
-        ResourceIdentifier = resourceIdentifier;
-        ResourceIdentifierName = resourceIdentifierName;
+        ConflictingPropertyValue = conflictingPropertyValue;
+        ConflictingPropertyName = conflictingPropertyName;
     }
 
     private static string GetMessage
