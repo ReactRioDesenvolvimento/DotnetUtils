@@ -2,32 +2,37 @@
 
 public class ResourceConflictException : RequestException
 {
-    public readonly string ConflictingPropertyName;
-    public readonly string ConflictingPropertyValue;
+    public readonly string? ResourceIdentifier;
+    public readonly string? ResourceIdentifierName;
     public readonly string ResourceName;
 
-    public ResourceConflictException(string message) : base(message)
-    { }
+    public ResourceConflictException(string resourceName) : base(GetMessage(resourceName))
+    {
+        ResourceName = resourceName;
+    }
+
+    public ResourceConflictException(string resourceName, string message) : base(message)
+    {
+        ResourceName = resourceName;
+    }
 
     public ResourceConflictException
     (
-        string resourceName,
-        string conflictingPropertyName,
-        string conflictingPropertyValue
-    ) : base(GetMessage(resourceName, conflictingPropertyName, conflictingPropertyValue))
+        string resourceName, string resourceIdentifier, string resourceIdentifierName,
+        string? message = null
+    ) : base(message ?? GetMessage(resourceName, resourceIdentifier, resourceIdentifierName))
     {
         ResourceName = resourceName;
-        ConflictingPropertyName = conflictingPropertyName;
-        ConflictingPropertyValue = conflictingPropertyValue;
+        ResourceIdentifier = resourceIdentifier;
+        ResourceIdentifierName = resourceIdentifierName;
     }
 
     private static string GetMessage
-    (
-        string resourceName, string conflictingPropertyName,
-        string conflictingPropertyValue
-    )
+        (string resoureName, string? resourceIdentifier = null, string? resourceIdentifierName = null)
     {
-        return
-            $"Já existe um recurso do tipo '{resourceName}' com a propriedade {conflictingPropertyName} com valor {conflictingPropertyValue}";
+        if (resourceIdentifier is null || resourceIdentifierName is null)
+            return $"Já existe um(a) \"{resoureName}\"";
+
+        return $"Já existe um (a) \"{resoureName}\" com \"{resourceIdentifierName}\" igual a \"{resourceIdentifier}\"";
     }
 }
