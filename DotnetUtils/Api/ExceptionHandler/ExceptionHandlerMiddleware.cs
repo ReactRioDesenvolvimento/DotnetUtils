@@ -33,6 +33,7 @@ public class ExceptionHandlerMiddleware
         }
         catch (Exception e)
         {
+            _logger.LogWarning(e, "Requeste exception");
             var isDevEnvironment = env.IsDevelopment() || config["EnableDevSettings"] == "true";
 
             var error = BaseRequestErrorMapper.FromException(e, isDevEnvironment, AdditionalErrorMaps);
